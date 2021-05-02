@@ -151,6 +151,7 @@ GAME_OVER = 'game over'
 FAST_COUNT_DOWN = 'fast count down'
 END_OF_LEVEL = 'end of level'
 FLAPPY = 'flappy'
+GABON = 'gabon'
 
 
 #GAME INFO DICTIONARY KEYS

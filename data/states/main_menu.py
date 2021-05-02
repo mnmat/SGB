@@ -182,7 +182,7 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER7
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.GABON
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER6:
@@ -194,7 +194,7 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER4
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.LEVEL1
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER7:
