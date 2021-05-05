@@ -168,7 +168,7 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER6
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.DK
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER5:

@@ -22,15 +22,15 @@ class Flappy(tools._State):
 		self.flap_sound = pygame.mixer.Sound('resources/sound/sfx_wing.wav')
 		self.death_sound = pygame.mixer.Sound('resources/sound/sfx_hit.wav')
 		self.score_sound = pygame.mixer.Sound('resources/sound/sfx_point.wav')
-		self.score_sound_countdown = 200
-		self.pipe_countdown = 200
+		self.score_sound_countdown = 100
+		pygame.time.set_timer(pygame.USEREVENT+1, 1200)
 
 		self.game_active = True
 		self.collision = False
 		self.victory = False
 		self.score = 0
 		self.high_score = 0
-		self.gravity = 0.40
+		self.gravity = 0.25
 
 		self.moving_score_list = []
 		self.game_font = pygame.font.Font('resources/fonts/04B_19.ttf',40)
@@ -60,8 +60,6 @@ class Flappy(tools._State):
 		self.pipe_surface = pygame.image.load('resources/graphics/vines.png')
 		self.pipe_surface = pygame.transform.scale2x(self.pipe_surface)
 		self.pipe_list = []
-		self.SPAWNPIPE = pygame.USEREVENT
-		pygame.time.set_timer(self.SPAWNPIPE, 600)
 		self.pipe_height = [400, 600, 800]
 
 	def setup_gameover(self):
@@ -89,7 +87,7 @@ class Flappy(tools._State):
 			self.score_display('main_game',surface)
 			surface.blit(self.rotated_bird, self.bird_rect)
 		else:
-			if self.score < 1:
+			if self.score < 9:
 				self.update_score()
 				surface.blit(self.game_over_surface, self.game_over_rect)
 				self.score_display('game_over',surface)
@@ -98,14 +96,16 @@ class Flappy(tools._State):
 				surface.blit(self.victory_surface, self.victory_rect)
 
 	def event_loop(self):
+		self.keys = []
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
 			elif event.type == pygame.KEYDOWN:
-				self.keys = pygame.key.get_pressed()
+				self.keys.append(event.key)
+				# self.keys = pg.key.get_pressed()
 				self.toggle_show_fps(event.key)
-			elif event.type == pygame.KEYUP:
-				self.keys = pygame.key.get_pressed()
+			elif event.type == pygame.USEREVENT+1:
+				self.create_pipe()
 			self.get_event(event)
 
 
@@ -125,26 +125,26 @@ class Flappy(tools._State):
 
 	def game_update(self):
 		if self.victory == False:
-			if self.keys[tools.keybinding['space']] and self.game_active == False and self.victory == False:
+			if tools.keybinding['space'] in self.keys and self.game_active == False and self.victory == False:
 				self.game_active = True
 				self.pipe_list.clear()
 				self.bird_rect.center = (100, 512)
 				self.bird_movement = 0
 				self.score = 0
-		if self.keys[tools.keybinding['enter']] and self.victory == True:
+		if tools.keybinding['enter'] in self.keys and self.victory == True:
 			self.next = c.GAME_OVER
 			self.done = True
 			setup.SCREEN = pygame.display.set_mode((800, 600))
 			setup.SCREEN_RECT = setup.SCREEN.get_rect()
 
 	def floor_update(self):
-		self.floor_x_pos -= 2
+		self.floor_x_pos -= 1
 		if self.floor_x_pos <= -576:
 			self.floor_x_pos = 0
 
 
 	def bird_update(self):
-		if self.keys[tools.keybinding['space']]:
+		if tools.keybinding['space'] in self.keys:
 			self.bird_movement = 0
 			self.bird_movement -= 12
 			if self.flap_sound.get_num_channels() < 1:
@@ -157,20 +157,15 @@ class Flappy(tools._State):
 		self.bird_rect.centery += self.bird_movement
 
 	def pipe_update(self):
-		self.pipe_countdown -= 1
-		if self.pipe_countdown <= 0:
-			self.create_pipe()
-			self.pipe_countdown = 200
-
 		self.move_pipes()
 		self.remove_pipes()
 
 	def score_update(self):
-		self.score += 0.005
+		self.score += 0.01
 		self.score_sound_countdown -= 1
 		if self.score_sound_countdown <= 0:
 			self.score_sound.play()
-			self.score_sound_countdown = 200
+			self.score_sound_countdown = 200/3
 
 	def draw_floor(self,screen):
 		screen.blit(self.floor_surface,(self.floor_x_pos,900))
@@ -187,8 +182,8 @@ class Flappy(tools._State):
 
 
 	def move_pipes(self):
-		for pipe in self.pipe_list :
-			pipe.centerx -= 10
+		for pipe in self.pipe_list:
+			pipe.centerx -= 5
 
 	def draw_pipes(self,screen):
 		for pipe in self.pipe_list:

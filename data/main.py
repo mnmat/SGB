@@ -1,7 +1,7 @@
 __author__ = 'justinarmstrong'
 
 from . import setup,tools
-from .states import main_menu,load_screen,level1,flappy,game
+from .states import main_menu,load_screen,level1,flappy,game,DonkeyKong
 from . import constants as c
 
 
@@ -15,7 +15,8 @@ def main():
                   c.LEVEL1: level1.Level1(),
                   c.END_OF_LEVEL: load_screen.Victory(),
                   c.FLAPPY: flappy.Flappy(),
-                  c.GABON: game.CarRacing()}
+                  c.GABON: game.CarRacing(),
+                  c.DK: DonkeyKong.DK()}
 
     run_it.setup_states(state_dict, c.MAIN_MENU)
     run_it.main()

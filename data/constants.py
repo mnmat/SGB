@@ -152,6 +152,7 @@ FAST_COUNT_DOWN = 'fast count down'
 END_OF_LEVEL = 'end of level'
 FLAPPY = 'flappy'
 GABON = 'gabon'
+DK = 'dk'
 
 
 #GAME INFO DICTIONARY KEYS

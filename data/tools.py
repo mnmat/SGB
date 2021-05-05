@@ -2,6 +2,7 @@ __author__ = 'justinarmstrong'
 
 import os
 import pygame as pg
+from . import constants as c
 
 keybinding = {
     'action':pg.K_s,
@@ -56,7 +57,9 @@ class Control(object):
             self.state.event_loop()
             self.update()
             pg.display.update()
-            self.clock.tick(self.fps)
+            if self.state_name == c.FLAPPY:
+                self.clock.tick(90)
+            else: self.clock.tick(self.fps)
             if self.state.show_fps:
                 fps = self.clock.get_fps()
                 with_fps = "{} - {:.2f} FPS".format(self.caption, fps)
