@@ -141,6 +141,41 @@ PLAYER5 = '5 player'
 PLAYER6 = '6 player'
 PLAYER7 = '7 player'
 
+#MAIN MENU CURSOR STATES
+MED = 'medicine'
+ARC = 'architecture'
+
+#MAIN MENU CURSOR STATES
+A = 'A'
+B = 'B'
+C = 'C'
+D = 'D'
+E = 'E'
+F = 'F'
+G = 'G'
+H = 'H'
+I = 'I'
+J = 'J'
+K = 'K'
+L = 'L'
+M = 'M'
+N = 'N'
+O = 'O'
+P = 'P'
+Q = 'Q'
+R = 'R'
+S = 'S'
+T = 'T'
+U = 'U'
+V = 'V'
+W = 'W'
+X = 'X'
+Y = 'Y'
+Z = 'Z'
+
+ENTER = 'Enter'
+ERASE = 'Erase'
+
 
 
 #OVERHEAD INFO STATES
@@ -153,7 +188,8 @@ END_OF_LEVEL = 'end of level'
 FLAPPY = 'flappy'
 GABON = 'gabon'
 DK = 'dk'
-
+BIRTH = 'birth'
+UNI = 'uni'
 
 #GAME INFO DICTIONARY KEYS
 COIN_TOTAL = 'coin total'
@@ -171,6 +207,7 @@ LOAD_SCREEN = 'load screen'
 TIME_OUT = 'time out'
 GAME_OVER = 'game over'
 LEVEL1 = 'level1'
+VICTORY = 'victory'
 
 #SOUND STATEZ
 NORMAL = 'normal'

@@ -5,6 +5,7 @@ from data import setup, tools
 from data import constants as c
 from .. components import info, mario
 import sys
+from .. import game_sound
 
 class Menu(tools._State):
     def __init__(self):
@@ -28,6 +29,11 @@ class Menu(tools._State):
         self.persist = persist
         self.game_info = persist
         self.overhead_info = info.OverheadInfo(self.game_info, c.MAIN_MENU)
+
+        pg.mixer.music.load('resources/music/file_select.mp3')
+        pg.mixer.music.play(-1)
+
+        self.state = c.MAIN_MENU
 
         self.sprite_sheet = setup.GFX['title_screen']
         self.setup_background()
@@ -130,6 +136,7 @@ class Menu(tools._State):
             for input in input_list:
                 if input in self.keys:
                     self.reset_game_info()
+                    self.next = c.BIRTH
                     self.done = True
         elif self.cursor.state == c.PLAYER2:
             self.cursor.rect.x = 20
@@ -154,7 +161,7 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER5
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.UNI
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER4:
@@ -209,6 +216,7 @@ class Menu(tools._State):
                     self.done = True
 
 
+
     def reset_game_info(self):
         """Resets the game info in case of a Game Over and restart"""
         self.game_info[c.COIN_TOTAL] = 0
@@ -218,6 +226,7 @@ class Menu(tools._State):
         self.game_info[c.LEVEL_STATE] = None
 
         self.persist = self.game_info
+        pg.mixer.music.fadeout(1000)
 
 
 

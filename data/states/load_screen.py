@@ -150,31 +150,48 @@ class Victory(LoadScreen):
 
     def set_next_state(self):
         """Sets next state"""
-        return c.GAME_OVER
+        return c.MAIN_MENU
 
     def set_overhead_info_state(self):
         """Sets the state to send to the overhead info object"""
-        return c.GAME_OVER
+        return c.VICTORY
+
+    def play_reward(self):
+        if self.previous == c.UNI:
+            fname = 'DK.mp4'
+        if self.previous == c.FLAPPY:
+            fname = 'DK.mp4'
+        if self.previous == c.BIRTH:
+            fname = 'DK.mp4'
+        if self.previous == c.DK:
+            fname = 'DK.mp4'
+        if self.previous == c.GABON:
+            fname = 'DK.mp4'
+        if self.previous == c.LEVEL1:
+            fname = 'DK.mp4'
+
+        command = ('open resources/video/' + fname)
+        p = subprocess.Popen(command, shell=True)
+        p.wait()
 
     def update(self, surface, current_time):
         surface.fill(c.BLACK)
-        if self.keys[pg.K_RETURN]:
-            self.done = True
         if self.play == False:
-            command = ('open resources/video/pfeilheim_stiegenlauf.mov')
-            p = subprocess.Popen(command, shell=True)
-            p.wait()
-            self.play=True
+            self.play = True
+            pg.time.wait(500)
+            #self.play_reward()
+        if pg.K_RETURN in self.keys:
+            self.play = False
+            self.done = True
 
     def event_loop(self):
+        self.keys = []
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 sys.exit()
             elif event.type == pg.KEYDOWN:
-                self.keys = pg.key.get_pressed()
+                self.keys.append(event.key)
                 self.toggle_show_fps(event.key)
-            elif event.type == pg.KEYUP:
-                self.keys = pg.key.get_pressed()
             self.get_event(event)
 
 

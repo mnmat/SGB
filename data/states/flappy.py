@@ -132,7 +132,7 @@ class Flappy(tools._State):
 				self.bird_movement = 0
 				self.score = 0
 		if tools.keybinding['enter'] in self.keys and self.victory == True:
-			self.next = c.GAME_OVER
+			self.next = c.VICTORY
 			self.done = True
 			setup.SCREEN = pygame.display.set_mode((800, 600))
 			setup.SCREEN_RECT = setup.SCREEN.get_rect()
@@ -165,7 +165,7 @@ class Flappy(tools._State):
 		self.score_sound_countdown -= 1
 		if self.score_sound_countdown <= 0:
 			self.score_sound.play()
-			self.score_sound_countdown = 200/3
+			self.score_sound_countdown = 100
 
 	def draw_floor(self,screen):
 		screen.blit(self.floor_surface,(self.floor_x_pos,900))

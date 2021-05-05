@@ -8,6 +8,8 @@ from time import sleep
 from data import setup, tools
 from data import constants as c
 import sys
+from .. import game_sound
+from data.components import info
 
 import pygame
 
@@ -22,6 +24,9 @@ class CarRacing(tools._State):
         self.game_info[c.CURRENT_TIME] = current_time
         self.game_info[c.LEVEL_STATE] = c.NOT_FROZEN
         self.game_info[c.MARIO_DEAD] = False
+        self.overhead_info = info.OverheadInfo(self.game_info, c.GABON)
+        pygame.mixer.music.load('resources/music/jungle.mp3')
+        pygame.mixer.music.play(-1)
 
         self.display_width = 800
         self.display_height = 600
@@ -106,7 +111,8 @@ class CarRacing(tools._State):
         if self.victory == False:
             self.initialize()
         if self.victory == True:
-            self.next = c.GAME_OVER
+            pygame.mixer.music.fadeout(1000)
+            self.next = c.VICTORY
             self.done = True
             setup.SCREEN = pygame.display.set_mode((800, 600))
             setup.SCREEN_RECT = setup.SCREEN.get_rect()

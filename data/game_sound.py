@@ -26,6 +26,11 @@ class Sound(object):
             pg.mixer.music.load(self.music_dict['game_over'])
             pg.mixer.music.play()
             self.state = c.GAME_OVER
+        elif self.overhead_info.state == c.VICTORY:
+            pg.mixer.music.load('resources/music/victory.mp3')
+            pg.mixer.music.play()
+            self.state = c.VICTORY
+
 
 
     def update(self, game_info, mario):

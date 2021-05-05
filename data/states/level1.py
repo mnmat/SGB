@@ -1416,7 +1416,7 @@ class Level1(tools._State):
             self.flag_timer = self.current_time
         elif (self.current_time - self.flag_timer) > 2000:
             self.set_game_info_values()
-            self.next = c.END_OF_LEVEL
+            self.next = c.VICTORY
             self.sound_manager.stop_music()
             self.done = True
 

@@ -1262,7 +1262,7 @@ class DK(tools._State):
                 self.playersScores(self.score, 388, 387,screen)
                 self.playersScores(self.highestScore, 485, 445,screen)
                 self.done = True
-                self.next = c.GAME_OVER
+                self.next = c.VICTORY
                 setup.SCREEN = pygame.display.set_mode((800, 600))
                 setup.SCREEN_RECT = setup.SCREEN.get_rect()
 
