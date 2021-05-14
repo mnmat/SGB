@@ -102,10 +102,10 @@ class OverheadInfo(object):
         rect = image.get_rect()
 
         image.blit(self.sprite_sheet, (0, 0), (x, y, width, height))
-        image.set_colorkey((92, 148, 252))
         image = pg.transform.scale(image,
                                    (int(rect.width*2.9),
                                     int(rect.height*2.9)))
+        image.set_colorkey((92, 148, 252))
         return image
 
 

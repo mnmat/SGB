@@ -316,38 +316,56 @@ class Mario(pg.sprite.Sprite):
 
         for frame in self.right_small_normal_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_small_normal_frames.append(new_image)
 
         for frame in self.right_small_green_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_small_green_frames.append(new_image)
 
         for frame in self.right_small_red_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_small_red_frames.append(new_image)
 
         for frame in self.right_small_black_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_small_black_frames.append(new_image)
 
         for frame in self.right_big_normal_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_big_normal_frames.append(new_image)
 
         for frame in self.right_big_green_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_big_green_frames.append(new_image)
 
         for frame in self.right_big_red_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_big_red_frames.append(new_image)
 
         for frame in self.right_big_black_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_big_black_frames.append(new_image)
 
         for frame in self.right_fire_frames:
             new_image = pg.transform.flip(frame, True, False)
+            new_image.convert()
+            new_image.set_colorkey(c.WHITE)
             self.left_fire_frames.append(new_image)
 
 
@@ -417,11 +435,13 @@ class Mario(pg.sprite.Sprite):
         rect = image.get_rect()
 
         image.blit(self.sprite_sheet, (0, 0), (x, y, width, height))
-        image.set_colorkey(c.WHITE)
-        image.convert()
         image = pg.transform.scale(image,
                                   (int(rect.width*c.SIZE_MULTIPLIER),
                                     int(rect.height*c.SIZE_MULTIPLIER)))
+        image.convert()
+        image.set_colorkey(c.WHITE)
+
+
         return image
 
 
