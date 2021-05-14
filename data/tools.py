@@ -71,7 +71,7 @@ class _State(object):
         self.keys = pg.key.get_pressed()
         self.start_time = 0.0
         self.current_time = 0.0
-        self.show_fps = False
+        self.show_fps = True
         self.done = False
         self.quit = False
         self.next = None

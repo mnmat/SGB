@@ -30,7 +30,7 @@ class Birth(tools._State):
         self.state = c.NOT_FROZEN
         self.sprite_sheet = setup.GFX['text_images']
 
-        pg.mixer.music.load('resources/music/birth.mp3')
+        pg.mixer.music.load('resources/music/birth.wav')
         pg.mixer.music.play(-1)
 
         self.game_active = True

@@ -1,7 +1,7 @@
 __author__ = 'justinarmstrong'
 
 from . import setup,tools
-from .states import main_menu,load_screen,level1,flappy,game,DonkeyKong,birth,studies
+from .states import main_menu,load_screen,level1,flappy,game,DonkeyKong,birth,studies,snake
 from . import constants as c
 
 
@@ -19,7 +19,8 @@ def main():
                   c.DK: DonkeyKong.DK(),
                   c.BIRTH: birth.Birth(),
                   c.UNI: studies.Uni(),
-                  c.VICTORY: load_screen.Victory()}
+                  c.VICTORY: load_screen.Victory(),
+                  c.CAKE: snake.Cake()}
 
     run_it.setup_states(state_dict, c.MAIN_MENU)
     run_it.main()

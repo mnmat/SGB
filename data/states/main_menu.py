@@ -18,7 +18,8 @@ class Menu(tools._State):
                    c.CURRENT_TIME: 0.0,
                    c.LEVEL_STATE: None,
                    c.CAMERA_START_X: 0,
-                   c.MARIO_DEAD: False}
+                   c.MARIO_DEAD: False,
+                   c.SELECT: None}
         self.startup(0.0, persist)
 
 
@@ -30,7 +31,7 @@ class Menu(tools._State):
         self.game_info = persist
         self.overhead_info = info.OverheadInfo(self.game_info, c.MAIN_MENU)
 
-        pg.mixer.music.load('resources/music/file_select.mp3')
+        pg.mixer.music.load('resources/music/file_select.wav')
         pg.mixer.music.play(-1)
 
         self.state = c.MAIN_MENU
@@ -136,7 +137,8 @@ class Menu(tools._State):
             for input in input_list:
                 if input in self.keys:
                     self.reset_game_info()
-                    self.next = c.BIRTH
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.BIRTH
                     self.done = True
         elif self.cursor.state == c.PLAYER2:
             self.cursor.rect.x = 20
@@ -147,7 +149,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER4
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.FLAPPY
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER3:
@@ -161,7 +164,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER5
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.UNI
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.UNI
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER4:
@@ -175,7 +179,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER6
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.DK
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.DK
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER5:
@@ -189,7 +194,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER7
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.GABON
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.GABON
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER6:
@@ -201,7 +207,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER4
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.LEVEL1
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.LEVEL1
                     self.reset_game_info()
                     self.done = True
         elif self.cursor.state == c.PLAYER7:
@@ -211,7 +218,8 @@ class Menu(tools._State):
                 self.cursor.state = c.PLAYER5
             for input in input_list:
                 if input in self.keys:
-                    self.next = c.FLAPPY
+                    self.next = c.LOAD_SCREEN
+                    self.persist[c.SELECT] = c.CAKE
                     self.reset_game_info()
                     self.done = True
 

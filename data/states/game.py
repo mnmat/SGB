@@ -25,7 +25,7 @@ class CarRacing(tools._State):
         self.game_info[c.LEVEL_STATE] = c.NOT_FROZEN
         self.game_info[c.MARIO_DEAD] = False
         self.overhead_info = info.OverheadInfo(self.game_info, c.GABON)
-        pygame.mixer.music.load('resources/music/jungle.mp3')
+        pygame.mixer.music.load('resources/music/jungle.wav')
         pygame.mixer.music.play(-1)
 
         self.display_width = 800

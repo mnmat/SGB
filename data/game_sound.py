@@ -27,7 +27,7 @@ class Sound(object):
             pg.mixer.music.play()
             self.state = c.GAME_OVER
         elif self.overhead_info.state == c.VICTORY:
-            pg.mixer.music.load('resources/music/victory.mp3')
+            pg.mixer.music.load('resources/music/victory.wav')
             pg.mixer.music.play()
             self.state = c.VICTORY
 

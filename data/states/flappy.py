@@ -31,6 +31,7 @@ class Flappy(tools._State):
 		self.score = 0
 		self.high_score = 0
 		self.gravity = 0.25
+		self.can_score = True
 
 		self.moving_score_list = []
 		self.game_font = pygame.font.Font('resources/fonts/04B_19.ttf',40)
@@ -82,7 +83,7 @@ class Flappy(tools._State):
 		"""Blit all sprites to the main surface"""
 		if self.game_active == True:
 			self.draw_background(surface)
-			self.draw_floor(surface)
+			#self.draw_floor(surface)
 			self.draw_pipes(surface)
 			self.score_display('main_game',surface)
 			surface.blit(self.rotated_bird, self.bird_rect)
@@ -118,7 +119,7 @@ class Flappy(tools._State):
 			self.pipe_update()
 			self.score_update()
 			self.check_collision()
-			self.floor_update()
+			#self.floor_update()
 
 		if self.game_active == False:
 			self.game_update()
@@ -148,7 +149,6 @@ class Flappy(tools._State):
 			self.bird_movement = 0
 			self.bird_movement -= 12
 			if self.flap_sound.get_num_channels() < 1:
-				print(self.flap_sound.get_num_channels())
 				self.flap_sound.play()
 
 
@@ -161,11 +161,20 @@ class Flappy(tools._State):
 		self.remove_pipes()
 
 	def score_update(self):
-		self.score += 0.01
-		self.score_sound_countdown -= 1
-		if self.score_sound_countdown <= 0:
-			self.score_sound.play()
-			self.score_sound_countdown = 100
+		if self.pipe_list:
+			for pipe in self.pipe_list:
+				if 95 < pipe.centerx < 105 and self.can_score:
+					self.score += 1
+					self.score_sound.play()
+					self.can_score = False
+				if pipe.centerx < 0:
+					self.can_score = True
+
+		#self.score += 0.01
+		#self.score_sound_countdown -= 1
+		#if self.score_sound_countdown <= 0:
+		#	self.score_sound.play()
+		#	self.score_sound_countdown = 100
 
 	def draw_floor(self,screen):
 		screen.blit(self.floor_surface,(self.floor_x_pos,900))
@@ -194,18 +203,18 @@ class Flappy(tools._State):
 				screen.blit(flip_pipe,pipe)
 
 	def remove_pipes(self):
-		for pipe in self.pipe_list:
-			if pipe.centerx == -600:
-				self.pipe_list.remove(pipe)
+		self.pipe_list = [pipe for pipe in self.pipe_list if pipe.right > -50]
 
 	def check_collision(self):
 		for pipe in self.pipe_list:
 			if self.bird_rect.colliderect(pipe):
 				self.death_sound.play()
 				self.game_active = False
+				self.can_score = True
 
 		if self.bird_rect.top <= -100 or self.bird_rect.bottom >= 900:
 			self.game_active =  False
+			self.can_score = True
 
 	def rotate_bird(self):
 		new_bird = pygame.transform.rotozoom(self.bird_img,-self.bird_movement * 3,1)

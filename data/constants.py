@@ -190,6 +190,7 @@ GABON = 'gabon'
 DK = 'dk'
 BIRTH = 'birth'
 UNI = 'uni'
+CAKE = 'cake'
 
 #GAME INFO DICTIONARY KEYS
 COIN_TOTAL = 'coin total'
@@ -200,6 +201,7 @@ CURRENT_TIME = 'current time'
 LEVEL_STATE = 'level state'
 CAMERA_START_X = 'camera start x'
 MARIO_DEAD = 'mario dead'
+SELECT = 'select'
 
 #STATES FOR ENTIRE GAME
 MAIN_MENU = 'main menu'
