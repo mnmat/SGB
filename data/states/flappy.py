@@ -44,7 +44,7 @@ class Flappy(tools._State):
 		self.setup_victory()
 
 	def setup_background(self):
-		self.background = pygame.image.load('resources/graphics/STP.png')
+		self.background = pygame.image.load('resources/graphics/STP.png').convert()
 		self.background = pygame.transform.scale2x(self.background)
 
 	def setup_ground(self):
@@ -58,7 +58,7 @@ class Flappy(tools._State):
 		self.bird_movement = 0
 
 	def setup_pipes(self):
-		self.pipe_surface = pygame.image.load('resources/graphics/vines.png')
+		self.pipe_surface = pygame.image.load('resources/graphics/vines.png').convert_alpha()
 		self.pipe_surface = pygame.transform.scale2x(self.pipe_surface)
 		self.pipe_list = []
 		self.pipe_height = [400, 600, 800]
@@ -116,9 +116,9 @@ class Flappy(tools._State):
 
 		if self.game_active == True:
 			self.bird_update()
-			self.pipe_update()
-			self.score_update()
-			self.check_collision()
+			self.pipe_update() #not the problem
+			self.score_update() #not the problem
+			self.check_collision() #not the problem
 			#self.floor_update()
 
 		if self.game_active == False:
@@ -150,7 +150,6 @@ class Flappy(tools._State):
 			self.bird_movement -= 12
 			if self.flap_sound.get_num_channels() < 1:
 				self.flap_sound.play()
-
 
 		self.bird_movement += self.gravity
 		self.rotated_bird = self.rotate_bird()

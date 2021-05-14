@@ -60,6 +60,7 @@ class Control(object):
             if self.state_name == c.FLAPPY:
                 self.clock.tick(90)
             else: self.clock.tick(self.fps)
+
             if self.state.show_fps:
                 fps = self.clock.get_fps()
                 with_fps = "{} - {:.2f} FPS".format(self.caption, fps)
