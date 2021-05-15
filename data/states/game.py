@@ -176,7 +176,7 @@ class CarRacing(tools._State):
 
     def display_message(self, surface):
         if self.message == True:
-            font = pygame.font.SysFont("comicsansms", 72, True)
+            font = pygame.font.Font("resources/fonts/comicsans.ttf", 72)
             if self.victory == True:
                 msg = "Victory!!!"
             else:
@@ -210,7 +210,7 @@ class CarRacing(tools._State):
         surface.blit(self.reward, (thingx, thingy))
 
     def highscore(self, count,surface):
-        font = pygame.font.SysFont("lucidaconsole", 20)
+        font = pygame.font.Font("resources/fonts/lucidaconsole.ttf", 20)
         text = font.render("Croc Score : " + str(count), True, self.white)
         surface.blit(text, (0, 0))
 
