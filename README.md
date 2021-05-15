@@ -18,3 +18,8 @@ RUN CODE:
 1. Go to SGB folder
 2. source .venv/bin/activate ## if virtual environment not active
 3. python3.8 sgb.py
+
+BUILD EXECUTABLE:
+1. Go to SGB folder
+2. `pyinstaller --clean -F --onefile --add-data "resources:resources" sgb.py`
+3. Executable will be stored in `./dist`
