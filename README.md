@@ -22,4 +22,4 @@ RUN CODE:
 BUILD EXECUTABLE:
 1. Go to SGB folder
 2. `pyinstaller --clean -F --onefile --add-data "resources:resources" sgb.py`
-3. Executable will be stored in `./build`
+3. Executable will be stored in `./dist`
