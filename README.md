@@ -1,33 +1,16 @@
-Super Mario Bros Level 1
+Super Giulio Bros Vol.30
 =============
 
-An attempt to recreate the first level of Super Mario Bros.
+INSTALLATION GUIDE:
 
-![screenshot](https://raw.github.com/justinmeister/Mario-Level-1/master/screenshot.png)
+Download SGB folder. Copy commands below into Terminal.
 
-CONTROLS: 
+1. xcode-select --install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+2. brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf
+3. brew install Caskroom/cask/xquartz
+4. brew install python@3.8
+5. Go to SGB folder
+6. python3.8 -m venv .venv; source .venv/bin/activate
+7. pip install -r requirements.txt
 
-Arrow keys for direction
-
-'a' for jump
-
-'s' for action (fireball, run)
-
-
-DEPENDENCIES:
-
-Pygame 1.9.1 (Python 2)
-
-Pygame 1.9.2 (Python 3) - a little trickier to get going.
-
-To install dependencies for Python 2.x:
-
-	pip install -r requirements.txt
-
-VIDEO DEMO:
-
-http://www.youtube.com/watch?v=HBbzYKMfx5Y
-   
-DISCLAIMER:
-
-This project is intended for non-commercial educational purposes.
