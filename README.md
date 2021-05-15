@@ -14,3 +14,7 @@ Download SGB folder. Copy commands below into Terminal.
 6. python3.8 -m venv .venv; source .venv/bin/activate
 7. pip install -r requirements.txt
 
+RUN CODE:
+1. Go to SGB folder
+2. source .venv/bin/activate ## if virtual environment not active
+3. python3.8 sgb.py
