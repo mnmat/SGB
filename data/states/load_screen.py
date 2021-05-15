@@ -248,7 +248,7 @@ class Victory(LoadScreen):
         if self.play == False:
             self.play = True
             pg.time.wait(500)
-            self.play_reward()
+            #self.play_reward()
         if pg.K_RETURN in self.keys:
             self.play = False
             self.done = True
